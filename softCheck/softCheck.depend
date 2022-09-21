@@ -1,0 +1,83 @@
+# depslib dependency file v1.0
+1663530909 source:c:\users\user\desktop\utn\lab2\softcheck\softchekv01\softcheck\alertas.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<fstream>
+	"fecha.h"
+	"alertas.h"
+
+1663530912 c:\users\user\desktop\utn\lab2\softcheck\softchekv01\softcheck\alertas.h
+	"fecha.h"
+
+1663717362 source:c:\users\user\desktop\utn\lab2\softcheck\softchekv01\softcheck\equipos.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<fstream>
+	"equipos.h"
+
+1663514199 c:\users\user\desktop\utn\lab2\softcheck\softchekv01\softcheck\equipos.h
+
+1663530833 source:c:\users\user\desktop\utn\lab2\softcheck\softchekv01\softcheck\impactos.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<fstream>
+	"fecha.h"
+	"impactos.h"
+
+1663530920 c:\users\user\desktop\utn\lab2\softcheck\softchekv01\softcheck\impactos.h
+	"fecha.h"
+
+1663716964 source:c:\users\user\desktop\utn\lab2\softcheck\softchekv01\softcheck\main.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	"equipos.h"
+	"operadores.h"
+	"impactos.h"
+	"alertas.h"
+	"impresion.h"
+
+1662237584 source:c:\users\user\desktop\utn\lab2\softcheck\softchekv01\softcheck\fecha.cpp
+	<iostream>
+	"fecha.h"
+
+1661857793 c:\users\user\desktop\utn\lab2\softcheck\softchekv01\softcheck\fecha.h
+
+1661865284 source:c:\users\user\desktop\utn\lab2\softcheck\softchekv01\softcheck\persona.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	"persona.h"
+	"fecha.h"
+
+1661864463 c:\users\user\desktop\utn\lab2\softcheck\softchekv01\softcheck\persona.h
+	"fecha.h"
+
+1663530723 c:\users\user\desktop\utn\lab2\softcheck\softchekv01\softcheck\operadores.h
+	"fecha.h"
+
+1663530980 source:c:\users\user\desktop\utn\lab2\softcheck\softchekv01\softcheck\operadores.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<fstream>
+	"fecha.h"
+	"operadores.h"
+
+1663434684 source:c:\users\user\desktop\utn\lab2\softcheck\softchekv01\softcheck\impresion.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<fstream>
+	"impresion.h"
+	"equipos.h"
+	"operadores.h"
+	"impactos.h"
+	"alertas.h"
+	"impresion.h"
+
+1663444245 c:\users\user\desktop\utn\lab2\softcheck\softchekv01\softcheck\impresion.h
+
