@@ -51,12 +51,15 @@ using namespace std;
     cin >> numIp;
     pos = buscarEquipo(numIp);
     if(pos>=0){
-        cout << "Ip ya registarada con anterioridad" << endl;
-        if(buscarEstado(pos)==false){
-            menu aux;
+        menu aux;
+        bool estado = buscarEstado(numIp);
+        if(estado==false){
+            cout << "IP YA REGISTRADA" << endl;
             aux.subMenuCambiarEstado(50,1,pos);
         }
-        system("pause");
+        else{
+            cout << "IP YA REGISTRADA"<<endl;
+        }
     }
     else{
         setIphost(numIp);
