@@ -10,6 +10,12 @@ public:
     int altaBaja();
     int consultas();
     int exportar();
+    int subMenuAB(int x, const char*);
+    int subMenuVolver();
+
+    //EDICION DE MENUS
+    void tituloSoft(const char* text, int posx, int posy);
+    void seleccion(const char* text, int posx, int posy, bool selected);
 
 };
 
