@@ -226,7 +226,6 @@ int menu::subMenuAB(int x, const char*text){
             menu op;
             case 0:
                 if(x==0){
-                    altaEquipo();
                     op.subMenuVolver();
                 }
                 else if(x==1){
