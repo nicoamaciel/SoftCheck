@@ -5,6 +5,10 @@
 
 using namespace std;
 #include "equipos.h"
+#include "menu.h"
+#include "rlutil.h"
+#include "iomanip"
+
     equipos objEquipos;
     int eq;
 
@@ -42,21 +46,26 @@ using namespace std;
     int numIp, pos;
     bool est;
 
-    cout << " Cargar nombre de host: ";
-    cin >>nom;
-    setNombreHost(nom);
     do{
     cout << " Cargar numero de ip: ";
     cin >> numIp;
     pos = buscarEquipo(numIp);
     if(pos>=0){
         cout << "Ip ya registarada con anterioridad" << endl;
+        if(buscarEstado(pos)==false){
+            menu aux;
+            aux.subMenuCambiarEstado(50,1,pos);
+        }
         system("pause");
     }
     else{
         setIphost(numIp);
         }
     }while(pos>=0);
+
+    cout << " Cargar nombre de host: ";
+    cin >>nom;
+    setNombreHost(nom);
     cout << " Cargar marca del host: ";
     cin >>mark;
     setMarca(mark);
@@ -73,18 +82,50 @@ using namespace std;
     void equipos::mostrarEquipos(){
 
         if(_Estado== true){
-        cout << getNombreHost() << "         |    " << getMarca() << "      |    " << getIphost() << "        |    " << getEstado();
-        cout << endl << "------------------------------------------------------------" << endl;
+
+        cout<<left;
+        rlutil::setColor(rlutil::LIGHTBLUE);
+        cout<< setw(12) << getNombreHost();
+        rlutil::setColor(rlutil::WHITE);
+        cout<< setw(3) << " | ";
+        rlutil::setColor(rlutil::LIGHTBLUE);
+        cout<< setw(15) << getMarca();
+        rlutil::setColor(rlutil::WHITE);
+        rlutil::setColor(rlutil::LIGHTBLUE);
+        cout<< setw(3) << " | ";
+        rlutil::setColor(rlutil::LIGHTBLUE);
+        cout<< setw(8) << getIphost();
+        rlutil::setColor(rlutil::WHITE);
+        cout<< setw(3) << " | ";
+        rlutil::setColor(rlutil::LIGHTBLUE);
+        cout<< setw(12) << getEstado();
+        rlutil::setColor(rlutil::WHITE);
+        cout<< setw(2) << " |" << endl;
+        cout<< setw(58) << "----------------------------------------------------------" << endl;
         }
 
     }
 
     void verEquipos(){
-        cout << " NOMBRE HOST " << " | " << " MARCA DEL HOST " << " | " << " IP HOST " << " | " << " ESTADO HOST "<<endl;
-        cout << "------------------------------------------------------------------"<< endl;
 
-
-
+        cout<<left;
+        rlutil::setColor(rlutil::LIGHTBLUE);
+        cout<< setw(12) << "NOMBRE HOST";
+        rlutil::setColor(rlutil::WHITE);
+        cout<< setw(3) << " | ";
+        rlutil::setColor(rlutil::LIGHTBLUE);
+        cout<< setw(15) << "MARCA DEL HOST";
+        rlutil::setColor(rlutil::WHITE);
+        cout<< setw(3) << " | ";
+        rlutil::setColor(rlutil::LIGHTBLUE);
+        cout<< setw(8) << "IP HOST";
+        rlutil::setColor(rlutil::WHITE);
+        cout<< setw(3) << " | ";
+        rlutil::setColor(rlutil::LIGHTBLUE);
+        cout<< setw(12) << "ESTADO HOST";
+        rlutil::setColor(rlutil::WHITE);
+        cout<< setw(2) << " |" << endl;
+        cout<< setw(58) << "==========================================================" << endl;
     }
 
 
@@ -142,6 +183,26 @@ using namespace std;
 
     }
 
+    bool buscarEstado(int nIP){
+        equipos obj;
+        int pos=0;
+        while(obj.leerdeDisco(pos)){
+            if(obj.getIphost()==nIP){
+                return obj.getEstado();
+            }
+            pos++;
+        }
+    }
+
+    void modificarEstado(int nIP){
+        equipos obj;
+        int pos = buscarEquipo(nIP);
+        obj.leerdeDisco(pos);
+        obj.setEstado(true);
+        obj.modificarEnDisco(pos);
+
+    }
+
 
     bool bajaEquipo(){
         equipos obj;
@@ -164,6 +225,7 @@ using namespace std;
         obj.leerdeDisco(pos);
         obj.setEstado(false);
         obj.modificarEnDisco(pos);
+        cout<< "EQUIPO DADO DE BAJA"<<endl;
 
     }
 
@@ -189,3 +251,4 @@ using namespace std;
             _equipos.close();
         }
     }
+
