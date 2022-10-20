@@ -12,6 +12,8 @@ public:
     int exportar();
     int subMenuAB(int x, const char*);
     int subMenuVolver();
+    int subMenuCambiarEstado(int posx, int posy, int ip);
+
 
     //EDICION DE MENUS
     void tituloSoft(const char* text, int posx, int posy);
