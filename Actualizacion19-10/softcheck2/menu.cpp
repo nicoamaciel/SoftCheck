@@ -223,7 +223,13 @@ int menu::consultas(){
         rlutil::cls();
         switch(y){
             menu mp;
+            funcion aux;
             case 0:
+                verEquipos();
+                aux.listadoEquipos();
+                system("pause");
+                mp.subMenuVolver(75,1);
+
                 break;
             case 1:
                 break;
@@ -422,47 +428,49 @@ int menu::subMenuAB(int x, const char*text){
 
         switch(y){
             menu op;
+            equipos aux;
             case 0:
                 if(x==0){
-                    op.subMenuVolver();
+                    aux.cargarEquipos();
+                    op.subMenuVolver(50,1);
                 }
                 else if(x==1){
                     altaOper();
-                    op.subMenuVolver();
+                    op.subMenuVolver(50,1);
                 }
                 else if(x==2){
                     //ALTA IMPACTO
-                    op.subMenuVolver();
+                    op.subMenuVolver(50,1);
                 }
                 else if(x==3){
                     //ALTA ALERTA
-                    op.subMenuVolver();
+                    op.subMenuVolver(50,1);
                 }
                 else if(x==4){
                     //ALTA TORRE
-                    op.subMenuVolver();
+                    op.subMenuVolver(50,1);
                 }
             break;
             case 1:
                 if(x==0){
                     bajaEquipo();
-                    op.subMenuVolver();
+                    op.subMenuVolver(50,1);
                 }
                 else if(x==1){
                     bajaOper();
-                    op.subMenuVolver();
+                    op.subMenuVolver(50,1);
                 }
                 else if(x==2){
                     //BAJA IMPACTO
-                    op.subMenuVolver();
+                    op.subMenuVolver(50,1);
                 }
                 else if(x==3){
                     //BAJA ALERTA
-                    op.subMenuVolver();
+                    op.subMenuVolver(50,1);
                 }
                 else if(x==4){
                     //BAJA TORRE
-                    op.subMenuVolver();
+                    op.subMenuVolver(50,1);
                 }
                  break;
             case 2:
@@ -481,21 +489,21 @@ int menu::subMenuAB(int x, const char*text){
 }
 
 
-int menu::subMenuVolver(){
+int menu::subMenuVolver(int posx, int posy){
     int y=0;
     rlutil::hidecursor();
 
     while(true){
     menu mp;
 
-    mp.tituloSoft("DESEA VOLVER AL MENU PRINCIPAL?", 1,6);
-    mp.seleccion("SI", 1, 7, y==0);
-    mp.seleccion("NO", 1, 8, y==1);
+    mp.tituloSoft("DESEA VOLVER AL MENU PRINCIPAL?", posx,posy);
+    mp.seleccion("SI", posx, posy+1, y==0);
+    mp.seleccion("NO", posx, posy+2, y==1);
 
     switch(rlutil::getkey()){
 
     case 14: //ARRIBA
-        rlutil::locate(0,7+y);
+        rlutil::locate(posx-1,(posy+1)+y);
         cout<<" "<<endl;
         y--;
         if(y<0){
@@ -503,7 +511,7 @@ int menu::subMenuVolver(){
         }
         break;
     case 15: //ABAJO
-        rlutil::locate(0,8+y);
+        rlutil::locate(posx-1,(posy+2)+y);
         cout<<" "<<endl;
         y++;
         if(y>1){
@@ -573,7 +581,10 @@ int menu::subMenuCambiarEstado(int posx, int posy, int ip){
                 modificarEstado(ip);
                 cout<<"EQUIPO DADO DE ALTA";
                 op.subMenuVolver(50,1);
+
+
             break;
+
             case 1:
                 op.subMenuVolver(50,1);
             break;
