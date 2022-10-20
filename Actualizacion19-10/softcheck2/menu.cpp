@@ -10,10 +10,7 @@ using namespace std;
 #include "impactos.h"
 #include "torres.h"
 
-
-menu llamar;
-funcion funcion;
-
+///Edicion menu
 void menu::tituloSoft(const char* text, int posx, int posy){
     rlutil::locate(posx, posy);
     rlutil::setColor(rlutil::LIGHTBLUE);
@@ -40,7 +37,7 @@ void menu::seleccion(const char* text, int posx, int posy, bool selected){
 
 }
 
-
+///  MENUS
 int menu::menuPrincipal(){
     int y=0;
     rlutil::hidecursor();
@@ -150,19 +147,19 @@ int menu::altaBaja(){
         switch(y){
             menu op;
             case 0:
-                op.subMenuAB(y, "EQUIPOS");
+                op.subMenuAB(y, "  EQUIPOS");
             break;
             case 1:
                 op.subMenuAB(y, "OPERADORES");
                 break;
             case 2:
-                op.subMenuAB(y, "IMPACTOS");
+                op.subMenuAB(y, " IMPACTOS");
                 break;
             case 3:
-                op.subMenuAB(y, "ALERTAS");
+                op.subMenuAB(y, "  ALERTAS");
                 break;
             case 4:
-                op.subMenuAB(y, "TORRES");
+                op.subMenuAB(y, "  TORRES");
                 break;
             case 5:
                 menu mp;
@@ -182,6 +179,207 @@ int menu::altaBaja(){
 
 }
 
+
+int menu::consultas(){
+    int y=0;
+    rlutil::hidecursor();
+    rlutil::cls();
+
+    while(true){
+    menu mp;
+
+    mp.tituloSoft(" SOFTCHECK ", 23, 1);
+    mp.tituloSoft(" CONSULTAS ", 23, 2);
+
+    mp.seleccion("LISTADO DE EQUIPOS", 20, 4, y==0);
+    mp.seleccion("LISTADO DE TORRES", 20, 5, y==1);
+    mp.seleccion("OPERADORES POR TURNO", 20, 6, y==2);
+    mp.seleccion("ALERTAS POR TURNO", 20, 7, y==3);
+    mp.seleccion("ALERTAS WARNING", 20, 8, y==4);
+    mp.seleccion("ALERTAS CRITICAL", 20, 9, y==5);
+    mp.seleccion("ESCALA DE RESOLUCIONES", 20, 10, y==6);
+    mp.seleccion("VOLVER", 20, 11, y==7);
+    mp.seleccion("SALIR", 20, 12, y==8);
+
+    switch(rlutil::getkey()){
+
+    case 14: //ARRIBA
+        rlutil::locate(18,8+y);
+        cout<<" "<<endl;
+        y--;
+        if(y<0){
+            y = 0;
+        }
+        break;
+    case 15: //ABAJO
+        rlutil::locate(18,8+y);
+        cout<<" "<<endl;
+        y++;
+        if(y>8){
+            y=8;
+        }
+        break;
+    case 1: //ENTER
+        rlutil::cls();
+        switch(y){
+            menu mp;
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                mp.menuPrincipal();
+                break;
+            case 8:
+                exit(0);
+            default:
+                break;
+        }
+    break;
+    default:
+        break;
+    }
+}
+}
+
+int menu::exportar(){
+    int y=0;
+    rlutil::hidecursor();
+    rlutil::cls();
+
+    while(true){
+    menu mp;
+
+    mp.tituloSoft(" SOFTCHECK ", 23, 1);
+    mp.tituloSoft(" EXPORTAR CSV ", 21, 2);
+
+    mp.seleccion("EXPORTAR EQUIPOS", 20, 4, y==0);
+    mp.seleccion("EXPORTAR OPERADORES", 20, 5, y==1);
+    mp.seleccion("EXPORTAR ALERTAS", 20, 6, y==2);
+    mp.seleccion("VOLVER", 20, 7, y==3);
+    mp.seleccion("SALIR", 20, 8, y==4);
+
+    switch(rlutil::getkey()){
+
+    case 14: //ARRIBA
+        rlutil::locate(18,4+y);
+        cout<<" "<<endl;
+        y--;
+        if(y<0){
+            y = 0;
+        }
+        break;
+    case 15: //ABAJO
+        rlutil::locate(18,4+y);
+        cout<<" "<<endl;
+        y++;
+        if(y>4){
+            y=4;
+        }
+        break;
+    case 1: //ENTER
+        rlutil::cls();
+        switch(y){
+            menu mp;
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                mp.menuPrincipal();
+                break;
+            case 4:
+                exit(0);
+            default:
+                break;
+        }
+    break;
+    default:
+        break;
+    }
+}
+}
+
+
+int menu::mantenimieto(){
+
+    int y=0;
+    rlutil::hidecursor();
+    rlutil::cls();
+
+    while(true){
+    menu mp;
+
+    mp.tituloSoft(" SOFTCHECK ", 23, 1);
+    mp.tituloSoft(" MANTENIMIENTO ", 23, 2);
+
+    mp.seleccion("BACKUP EQUIPOS", 20, 4, y==0);
+    mp.seleccion("BACKUP TORRES", 20, 5, y==1);
+    mp.seleccion("BACKUP IMPACTOS", 20, 6, y==2);
+    mp.seleccion("MANUAL DE USUARIO", 20, 7, y==3);
+    mp.seleccion("VOLVER", 20, 8, y==4);
+    mp.seleccion("SALIR", 20, 9, y==5);
+
+    switch(rlutil::getkey()){
+
+    case 14: //ARRIBA
+        rlutil::locate(18,5+y);
+        cout<<" "<<endl;
+        y--;
+        if(y<0){
+            y = 0;
+        }
+        break;
+    case 15: //ABAJO
+        rlutil::locate(18,5+y);
+        cout<<" "<<endl;
+        y++;
+        if(y>5){
+            y=5;
+        }
+        break;
+    case 1: //ENTER
+        rlutil::cls();
+        switch(y){
+            menu mp;
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                mp.menuPrincipal();
+                break;
+            case 5:
+                exit(0);
+                break;
+            default:
+                break;
+        }
+    break;
+    default:
+        break;
+    }
+}
+}
+
+
+/// SUB-MENUS
 int menu::subMenuAB(int x, const char*text){
 
     int y=0;
@@ -326,204 +524,6 @@ int menu::subMenuVolver(){
                 exit(0);
                 break;
 
-            default:
-                break;
-        }
-    break;
-    default:
-        break;
-    }
-}
-}
-
-int menu::consultas(){
-    int y=0;
-    rlutil::hidecursor();
-    rlutil::cls();
-
-    while(true){
-    menu mp;
-
-    mp.tituloSoft(" SOFTCHECK ", 23, 1);
-    mp.tituloSoft(" CONSULTAS ", 23, 2);
-
-    mp.seleccion("LISTADO DE EQUIPOS", 20, 4, y==0);
-    mp.seleccion("LISTADO DE TORRES", 20, 5, y==1);
-    mp.seleccion("OPERADORES POR TURNO", 20, 6, y==2);
-    mp.seleccion("ALERTAS POR TURNO", 20, 7, y==3);
-    mp.seleccion("ALERTAS WARNING", 20, 8, y==4);
-    mp.seleccion("ALERTAS CRITICAL", 20, 9, y==5);
-    mp.seleccion("ESCALA DE RESOLUCIONES", 20, 10, y==6);
-    mp.seleccion("VOLVER", 20, 11, y==7);
-    mp.seleccion("SALIR", 20, 12, y==8);
-
-    switch(rlutil::getkey()){
-
-    case 14: //ARRIBA
-        rlutil::locate(18,8+y);
-        cout<<" "<<endl;
-        y--;
-        if(y<0){
-            y = 0;
-        }
-        break;
-    case 15: //ABAJO
-        rlutil::locate(18,8+y);
-        cout<<" "<<endl;
-        y++;
-        if(y>8){
-            y=8;
-        }
-        break;
-    case 1: //ENTER
-        rlutil::cls();
-        switch(y){
-            menu mp;
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            case 7:
-                mp.menuPrincipal();
-                break;
-            case 8:
-                exit(0);
-            default:
-                break;
-        }
-    break;
-    default:
-        break;
-    }
-}
-}
-
-int menu::exportar(){
-    int y=0;
-    rlutil::hidecursor();
-    rlutil::cls();
-
-    while(true){
-    menu mp;
-
-    mp.tituloSoft(" SOFTCHECK ", 23, 1);
-    mp.tituloSoft(" EXPORTAR CSV ", 23, 2);
-
-    mp.seleccion("EXPORTAR EQUIPOS", 20, 4, y==0);
-    mp.seleccion("EXPORTAR OPERADORES", 20, 5, y==1);
-    mp.seleccion("EXPORTAR ALERTAS", 20, 6, y==2);
-    mp.seleccion("VOLVER", 20, 7, y==3);
-    mp.seleccion("SALIR", 20, 8, y==4);
-
-    switch(rlutil::getkey()){
-
-    case 14: //ARRIBA
-        rlutil::locate(18,4+y);
-        cout<<" "<<endl;
-        y--;
-        if(y<0){
-            y = 0;
-        }
-        break;
-    case 15: //ABAJO
-        rlutil::locate(18,4+y);
-        cout<<" "<<endl;
-        y++;
-        if(y>4){
-            y=4;
-        }
-        break;
-    case 1: //ENTER
-        rlutil::cls();
-        switch(y){
-            menu mp;
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                mp.menuPrincipal();
-                break;
-            case 4:
-                exit(0);
-            default:
-                break;
-        }
-    break;
-    default:
-        break;
-    }
-}
-}
-
-
-int menu::mantenimieto(){
-
-    int y=0;
-    rlutil::hidecursor();
-    rlutil::cls();
-
-    while(true){
-    menu mp;
-
-    mp.tituloSoft(" SOFTCHECK ", 23, 1);
-    mp.tituloSoft(" MANTENIMIENTO ", 23, 2);
-
-    mp.seleccion("BACKUP EQUIPOS", 20, 4, y==0);
-    mp.seleccion("BACKUP TORRES", 20, 5, y==1);
-    mp.seleccion("BACKUP IMPACTOS", 20, 6, y==2);
-    mp.seleccion("MANUAL DE USUARIO", 20, 7, y==3);
-    mp.seleccion("VOLVER", 20, 8, y==4);
-    mp.seleccion("SALIR", 20, 9, y==5);
-
-    switch(rlutil::getkey()){
-
-    case 14: //ARRIBA
-        rlutil::locate(18,5+y);
-        cout<<" "<<endl;
-        y--;
-        if(y<0){
-            y = 0;
-        }
-        break;
-    case 15: //ABAJO
-        rlutil::locate(18,5+y);
-        cout<<" "<<endl;
-        y++;
-        if(y>5){
-            y=5;
-        }
-        break;
-    case 1: //ENTER
-        rlutil::cls();
-        switch(y){
-            menu mp;
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                mp.menuPrincipal();
-                break;
-            case 5:
-                exit(0);
-                break;
             default:
                 break;
         }
