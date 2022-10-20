@@ -533,3 +533,57 @@ int menu::subMenuVolver(){
     }
 }
 }
+
+int menu::subMenuCambiarEstado(int posx, int posy, int ip){
+    int y=0;
+    rlutil::hidecursor();
+
+    while(true){
+    menu mp;
+
+    mp.tituloSoft("DESEA VOLVER A DAR DE ALTA ESTE EQUIPO?", posx,posy);
+    mp.seleccion("SI", posx, posy+1, y==0);
+    mp.seleccion("NO", posx, posy+2, y==1);
+
+    switch(rlutil::getkey()){
+
+    case 14: //ARRIBA
+        rlutil::locate(posx-1,(posy+1)+y);
+        cout<<" "<<endl;
+        y--;
+        if(y<0){
+            y = 0;
+        }
+        break;
+    case 15: //ABAJO
+        rlutil::locate(posx-1,(posy+2)+y);
+        cout<<" "<<endl;
+        y++;
+        if(y>1){
+            y=1
+            ;
+        }
+        break;
+    case 1: //ENTER
+        rlutil::cls();
+
+        switch(y){
+            menu op;
+            case 0:
+                modificarEstado(ip);
+                cout<<"EQUIPO DADO DE ALTA";
+                op.subMenuVolver(50,1);
+            break;
+            case 1:
+                op.subMenuVolver(50,1);
+            break;
+
+            default:
+                break;
+        }
+    break;
+    default:
+        break;
+    }
+}
+}
