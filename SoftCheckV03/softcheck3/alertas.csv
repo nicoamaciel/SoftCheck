@@ -1,0 +1,16 @@
+TORRE;SERVICIO;USUARIO;DIA;MES;ANIO
+Security;PerdidaDePaquetes;1608;12;10;2022
+Network;MantProgramado;1608;2;8;2022
+Network;UpsSinConexion;1608;1;6;2022
+Security;FallaConectividad;2587;14;2;2022
+Wintel;DiscoSinEspacio;2587;6;9;2022
+Security;UsuarioDesconocido;2587;30;5;2022
+Unix;ServerSinRespuesta;3698;25;1;2022
+Wintel;SoReinicio;3698;10;3;2022
+Unix;UsuarioBloqueado;1254;9;7;2022
+Security;PerdidaDePaquetes;1257;11;1;2022
+Unix;ServerSinRespuesta;1257;11;1;2022
+Unix;SoReinicio;1257;15;8;2022
+Wintel;UsuarioBloqueado;3104;9;9;2022
+Network;UpsSinConexion;3104;15;1;2022
+Network;FallaConectividad;3104;9;9;2022

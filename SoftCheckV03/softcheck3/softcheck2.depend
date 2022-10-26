@@ -1,0 +1,89 @@
+# depslib dependency file v1.0
+1665529595 source:c:\users\user\desktop\utn\lab2\softcheck\softcheckv02\softcheck2\main.cpp
+	<iostream>
+	"menu.h"
+
+1666809919 source:c:\users\user\desktop\utn\lab2\softcheck\softcheckv02\softcheck2\menu.cpp
+	<iostream>
+	"menu.h"
+	"funciones.h"
+
+1666448870 c:\users\user\desktop\utn\lab2\softcheck\softcheckv02\softcheck2\menu.h
+
+1666808224 source:c:\users\user\desktop\utn\lab2\softcheck\softcheckv02\softcheck2\alertas.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<fstream>
+	"fecha.h"
+	"alertas.h"
+
+1666656380 c:\users\user\desktop\utn\lab2\softcheck\softcheckv02\softcheck2\alertas.h
+	"fecha.h"
+
+1666808171 source:c:\users\user\desktop\utn\lab2\softcheck\softcheckv02\softcheck2\equipos.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<fstream>
+	"equipos.h"
+
+1666649711 c:\users\user\desktop\utn\lab2\softcheck\softcheckv02\softcheck2\equipos.h
+
+1665540134 source:c:\users\user\desktop\utn\lab2\softcheck\softcheckv02\softcheck2\fecha.cpp
+	<iostream>
+	"fecha.h"
+
+1665540110 c:\users\user\desktop\utn\lab2\softcheck\softcheckv02\softcheck2\fecha.h
+
+1666449312 source:c:\users\user\desktop\utn\lab2\softcheck\softcheckv02\softcheck2\impactos.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<fstream>
+	"fecha.h"
+	"impactos.h"
+
+1666448480 c:\users\user\desktop\utn\lab2\softcheck\softcheckv02\softcheck2\impactos.h
+	"fecha.h"
+
+1666542053 source:c:\users\user\desktop\utn\lab2\softcheck\softcheckv02\softcheck2\torres.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<fstream>
+	"torres.h"
+	"fecha.h"
+
+1666541946 c:\users\user\desktop\utn\lab2\softcheck\softcheckv02\softcheck2\torres.h
+
+1666808204 source:c:\users\user\desktop\utn\lab2\softcheck\softcheckv02\softcheck2\operadores.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<fstream>
+	"fecha.h"
+	"operadores.h"
+
+1666652197 c:\users\user\desktop\utn\lab2\softcheck\softcheckv02\softcheck2\operadores.h
+	"fecha.h"
+
+1666811821 source:c:\users\user\desktop\utn\lab2\softcheck\softcheckv02\softcheck2\funciones.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<fstream>
+	"funciones.h"
+	"equipos.h"
+	"operadores.h"
+	"impactos.h"
+	"alertas.h"
+	"torres.h"
+
+1666811366 c:\users\user\desktop\utn\lab2\softcheck\softcheckv02\softcheck2\funciones.h
+	"equipos.h"
+	"operadores.h"
+	"impactos.h"
+	"alertas.h"
+	"torres.h"
+
