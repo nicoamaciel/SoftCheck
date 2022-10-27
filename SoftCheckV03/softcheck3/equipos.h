@@ -38,8 +38,10 @@ public:
 
  void verEquipos();
  int buscarEquipo(int);
+ bool buscarEstado(int);
+ void modificarEstado(int);
  bool bajaEquipo();
- bool csvEquipos();
+ bool grabarCsv();
 
 
 #endif // EQUIPOS_H_INCLUDED
