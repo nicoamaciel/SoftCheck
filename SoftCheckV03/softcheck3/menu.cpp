@@ -3,341 +3,600 @@ using namespace std;
 
 #include "menu.h"
 #include "funciones.h"
+#include "rlutil.h"
+#include "equipos.h"
+#include "operadores.h"
+#include "alertas.h"
+#include "impactos.h"
+#include "torres.h"
 
-menu llamar;
-funcion funcion;
+///Edicion menu
+void menu::tituloSoft(const char* text, int posx, int posy){
+    rlutil::locate(posx, posy);
+    rlutil::setColor(rlutil::LIGHTBLUE);
+    cout<<text<<endl;
+    rlutil::setColor(rlutil::WHITE);
+}
 
+void menu::seleccion(const char* text, int posx, int posy, bool selected){
+    if(selected){
+        rlutil::setBackgroundColor(rlutil::LIGHTBLUE);
+        rlutil::setColor(rlutil::BLACK);
+        rlutil::locate(posx - 2, posy);
+        cout<< (char)62 << " " << text << " "  <<endl;
+
+    }
+    else{
+        rlutil::setBackgroundColor(rlutil::BLACK);
+        rlutil::setColor(rlutil::WHITE);
+        rlutil::locate(posx - 3, posy);
+        cout<< "   " << text << " " << endl;
+    }
+
+    rlutil::setBackgroundColor(rlutil::BLACK);
+
+}
+
+///  MENUS
 int menu::menuPrincipal(){
-
-    int opcion;
+    int y=0;
+    rlutil::hidecursor();
 
     while(true){
+    menu mp;
 
-    system("cls");
-    cout<<"------- SOFTCHECK -------"<<endl;
-    cout<<"1.     GESTION ALTA-BAJA"<<endl;
-    cout<<"2.     CONSULTAS"<<endl;
-    cout<<"3.     EXPORTAR"<<endl;
-    cout<<"4.     MANTENIMIENTO"<<endl;
-    cout<<"0.     SALIR"<<endl;
-    cout<<"-----------------------------"<<endl<<endl;
-    cout<<"OPCION: ";
-    cin>>opcion;
-    system("cls");
-    switch(opcion){
-    case 1:
-        llamar.altaBaja();
+    mp.tituloSoft(" SOFTCHECK ", 23, 2);
 
-         break;
-    case 2:
-        llamar.consultas();
-        break;
-    case 3:
-        llamar.exportar();
-        break;
-    case 4:
-        llamar.mantenimieto();
-        break;
+    mp.seleccion("GESTION ALTA-BAJA", 20, 4, y==0);
+    mp.seleccion("CONSULTAS", 20, 5, y==1);
+    mp.seleccion("EXPORTAR", 20, 6, y==2);
+    mp.seleccion("MANTENIMIENTO", 20, 7, y==3);
+    mp.seleccion("SALIR", 20, 8, y==4);
 
-    case 0:
-        return 0;
+    switch(rlutil::getkey()){
+
+    case 14: //ARRIBA
+        rlutil::locate(18,4+y);
+        cout<<" "<<endl;
+        y--;
+        if(y<0){
+            y = 0;
+        }
+        break;
+    case 15: //ABAJO
+        rlutil::locate(18,4+y);
+        cout<<" "<<endl;
+        y++;
+        if(y>4){
+            y=4;
+        }
+        break;
+    case 1: //ENTER
+
+        switch(y){
+            menu op;
+            case 0:
+                op.altaBaja();
+            break;
+            case 1:
+                op.consultas();
+                break;
+            case 2:
+                op.exportar();
+                break;
+            case 3:
+                op.mantenimieto();
+                break;
+            case 4:
+                exit(0);
+                break;
+
+
+            default:
+                break;
+        }
     break;
+    default:
+        break;
     }
-        system("pause");
-
-    }
-
-	cout<<endl;
-	system("pause");
-
+}
 }
 
 int menu::altaBaja(){
 
-int opcion, opc2;
+    int y=0;
+    rlutil::hidecursor();
+    rlutil::cls();
 
     while(true){
+    menu mp;
 
-    system("cls");
-    cout<<"------- ALTAS & BAJAS -------"<<endl;
-    cout<<"1.     EQUIPOS"<<endl;
-    cout<<"2.     OPERADORES"<<endl;
-    cout<<"3.     IMPACTOS"<<endl;
-    cout<<"4.     ALERTAS"<<endl;
-    cout<<"5.     TORRES"<<endl;
-    cout<<"0.     SALIR"<<endl;
-    cout<<"-----------------------------"<<endl<<endl;
-    cout<<"OPCION: ";
-    cin>>opcion;
-    system("cls");
-    switch(opcion){
-    case 1:
-        cout<<"1.    ALTA"<<endl;
-        cout<<"2.    BAJA"<<endl;
-        cout<<"-----------------------------"<<endl<<endl;
-        cout<<"OPCION: ";
-        cin>>opc2;
-        system("cls");
-        switch(opc2){
-        case 1:
-            funcion.ingresarEquipos();
-            break;
-        case 2:
-            funcion.bajadeEquipos();
-            break;
-            }
-         break;
-    case 2:
-        cout<<"1.    ALTA"<<endl;
-        cout<<"2.    BAJA"<<endl;
-        cout<<"-----------------------------"<<endl<<endl;
-        cout<<"OPCION: ";
-        cin>>opc2;
-        system("cls");
-        switch(opc2){
-        case 1:
-            funcion.ingresoOperadores();
-            break;
-        case 2:
-            funcion.bajadeOperadores();
-            break;
-            }
-         break;
+    mp.tituloSoft(" SOFTCHECK ", 23, 1);
+    mp.tituloSoft(" ALTAS & BAJAS ", 21, 2);
 
+    mp.seleccion("EQUIPOS", 20, 4, y==0);
+    mp.seleccion("OPERADORES", 20, 5, y==1);
+    mp.seleccion("IMPACTOS", 20, 6, y==2);
+    mp.seleccion("ALERTAS", 20, 7, y==3);
+    mp.seleccion("TORRES", 20, 8, y==4);
+    mp.seleccion("VOLVER", 20, 9, y==5);
+    mp.seleccion("SALIR", 20, 10, y==6);
+
+    switch(rlutil::getkey()){
+
+    case 14: //ARRIBA
+        rlutil::locate(18,6+y);
+        cout<<" "<<endl;
+        y--;
+        if(y<0){
+            y = 0;
+        }
         break;
-    case 3:
-        cout<<"1.    ALTA"<<endl;
-        cout<<"2.    BAJA"<<endl;
-        cout<<"-----------------------------"<<endl<<endl;
-        cout<<"OPCION: ";
-        cin>>opc2;
-        system("cls");
-        switch(opc2){
-        case 1:
-            funcion.ingresoImpactos();
-            break;
-        case 2:
-
-            break;
-            }
-         break;
+    case 15: //ABAJO
+        rlutil::locate(18,6+y);
+        cout<<" "<<endl;
+        y++;
+        if(y>6){
+            y=6;
+        }
         break;
-    case 4:
-        cout<<"1.    ALTA"<<endl;
-        cout<<"2.    BAJA"<<endl;
-        cout<<"-----------------------------"<<endl<<endl;
-        cout<<"OPCION: ";
-        cin>>opc2;
-        system("cls");
-        switch(opc2){
-        case 1:
-            funcion.ingresoAlertas();
-            break;
-        case 2:
-            break;
+    case 1: //ENTER
+        rlutil::cls();
 
-            }
-         break;
-        break;
-    case 5:
-        cout<<"1.    ALTA"<<endl;
-        cout<<"2.    BAJA"<<endl;
-        cout<<"-----------------------------"<<endl<<endl;
-        cout<<"OPCION: ";
-        cin>>opc2;
-        system("cls");
-        switch(opc2){
-        case 1:
-            funcion.ingresoTorres();
-            break;
-        case 2:
-            break;
 
-            }
-         break;
-        break;
-    case 0: return 0;
-        break;
+        switch(y){
+            menu op;
+            case 0:
+                op.subMenuAB(y, "  EQUIPOS");
+            break;
+            case 1:
+                op.subMenuAB(y, "OPERADORES");
+                break;
+            case 2:
+                op.subMenuAB(y, " IMPACTOS");
+                break;
+            case 3:
+                op.subMenuAB(y, "  ALERTAS");
+                break;
+            case 4:
+                op.subMenuAB(y, "  TORRES");
+                break;
+            case 5:
+                menu mp;
+                mp.menuPrincipal();
+                break;
+            case 6:
+                exit(0);
 
+            default:
+                break;
+        }
+    break;
+    default:
+        break;
     }
-        system("pause");
-
-    }
-
-	cout<<endl;
-	system("pause");
-
+}
 
 }
 
-int menu::consultas(){
 
-int opcion;
+int menu::consultas(){
+    int y=0;
+    rlutil::hidecursor();
+    rlutil::cls();
 
     while(true){
+    menu mp;
 
-    system("cls");
-    cout<<"------- CONSULTAS -------"<<endl;
-    cout<<"1.     LISTADO DE EQUIPOS"<<endl;
-    cout<<"2.     LISTADO DE TORRES"<<endl;
-    cout<<"3.     OPERADORES POR TURNO "<<endl;
-    cout<<"4.     ALERTAS POR TURNO"<<endl;
-    cout<<"5.     ALERTAS WARNING"<<endl;
-    cout<<"6.     ALERTAS CRITICAL"<<endl;
-    cout<<"7.     ESCALA DE RESOLUCIONES"<<endl;
-    cout<<"0.     SALIR"<<endl;
-    cout<<"-----------------------------"<<endl<<endl;
-    cout<<"OPCION: ";
-    cin>>opcion;
-    system("cls");
-    switch(opcion){
-    case 1:
-        {
-        funcion.listadoEquipos();
-        }
+    mp.tituloSoft(" SOFTCHECK ", 23, 1);
+    mp.tituloSoft(" CONSULTAS ", 23, 2);
 
-        break;
-    case 2:
-        {
-        funcion.listadoTorres();
+    mp.seleccion("LISTADO DE EQUIPOS", 20, 4, y==0);
+    mp.seleccion("LISTADO DE TORRES", 20, 5, y==1);
+    mp.seleccion("OPERADORES POR TURNO", 20, 6, y==2);
+    mp.seleccion("ALERTAS POR TURNO", 20, 7, y==3);
+    mp.seleccion("ALERTAS WARNING", 20, 8, y==4);
+    mp.seleccion("ALERTAS CRITICAL", 20, 9, y==5);
+    mp.seleccion("ESCALA DE RESOLUCIONES", 20, 10, y==6);
+    mp.seleccion("VOLVER", 20, 11, y==7);
+    mp.seleccion("SALIR", 20, 12, y==8);
 
-        }
+    switch(rlutil::getkey()){
 
-        break;
-    case 3:
-        {
-        funcion.listadoOper();
-        }
-
-        break;
-    case 4:
-        {
-        funcion.alertasPorTurno();
+    case 14: //ARRIBA
+        rlutil::locate(18,8+y);
+        cout<<" "<<endl;
+        y--;
+        if(y<0){
+            y = 0;
         }
         break;
-    case 5:
-        {
-        funcion.alertasWarning();
+    case 15: //ABAJO
+        rlutil::locate(18,8+y);
+        cout<<" "<<endl;
+        y++;
+        if(y>8){
+            y=8;
         }
         break;
-    case 6:
-        {
-        funcion.alertasCritical();
+    case 1: //ENTER
+        rlutil::cls();
+        switch(y){
+            menu mp;
+            funcion aux;
+            case 0:
+                verEquipos();
+                aux.listadoEquipos();
+                system("pause");
+                mp.subMenuVolver(75,1);
+
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                mp.menuPrincipal();
+                break;
+            case 8:
+                exit(0);
+            default:
+                break;
         }
+    break;
+    default:
         break;
-    case 7:
-        {
-        funcion.listadoImpac();
-
-        }
-        break;
-
-    case 0: return 0;
-        break;
-
     }
-        system("pause");
-
-    }
-
-	cout<<endl;
-	system("pause");
-
+}
 }
 
 int menu::exportar(){
-
-int opcion;
+    int y=0;
+    rlutil::hidecursor();
+    rlutil::cls();
 
     while(true){
+    menu mp;
 
-    system("cls");
-    cout<<"------- EXPORTAR CSV -------"<<endl;
-    cout<<"1.     EXPORTAR EQUIPOS"<<endl;
-    cout<<"2.     EXPORTAR OPERADORES"<<endl;
-    cout<<"3.     EXPORTAR ALERTAS"<<endl;
-    cout<<"0.     SALIR"<<endl;
-    cout<<"-----------------------------"<<endl<<endl;
-    cout<<"OPCION: ";
-    cin>>opcion;
-    system("cls");
-    switch(opcion){
-    case 1:
-        if(csvEquipos()>0){
-            cout << "Archivo exportando" << endl;
+    mp.tituloSoft(" SOFTCHECK ", 23, 1);
+    mp.tituloSoft(" EXPORTAR CSV ", 21, 2);
+
+    mp.seleccion("EXPORTAR EQUIPOS", 20, 4, y==0);
+    mp.seleccion("EXPORTAR OPERADORES", 20, 5, y==1);
+    mp.seleccion("EXPORTAR ALERTAS", 20, 6, y==2);
+    mp.seleccion("VOLVER", 20, 7, y==3);
+    mp.seleccion("SALIR", 20, 8, y==4);
+
+    switch(rlutil::getkey()){
+
+    case 14: //ARRIBA
+        rlutil::locate(18,4+y);
+        cout<<" "<<endl;
+        y--;
+        if(y<0){
+            y = 0;
         }
         break;
-    case 2:
-            if(CsvOperadores()>0){
-               cout << "Archivo exportando" << endl;
-            }
+    case 15: //ABAJO
+        rlutil::locate(18,4+y);
+        cout<<" "<<endl;
+        y++;
+        if(y>4){
+            y=4;
+        }
         break;
-    case 3:
-            if(csvAlertas()>0){
-               cout << "Archivo exportando" << endl;
-            }
+    case 1: //ENTER
+        rlutil::cls();
+        switch(y){
+            menu mp;
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                mp.menuPrincipal();
+                break;
+            case 4:
+                exit(0);
+            default:
+                break;
+        }
+    break;
+    default:
         break;
-    case 4:
-        break;
-    case 0: return 0;
-        break;
-
     }
-        system("pause");
-
-    }
-
-	cout<<endl;
-	system("pause");
-
-
-
-
-
 }
+}
+
 
 int menu::mantenimieto(){
 
-int opcion;
+    int y=0;
+    rlutil::hidecursor();
+    rlutil::cls();
 
     while(true){
+    menu mp;
 
-    system("cls");
-    cout<<"------- MANTENIMIENTO -------"<<endl;
-    cout<<"1.     BACKUP EQUIPOS"<<endl;
-    cout<<"2.     BACKUP TORRES"<<endl;
-    cout<<"3.     BACKUP IMPACTOS"<<endl;
-    cout<<"4.     MANUAL DE USUARIO"<<endl;
-    cout<<"0.     SALIR"<<endl;
-    cout<<"-----------------------------"<<endl<<endl;
-    cout<<"OPCION: ";
-    cin>>opcion;
-    system("cls");
-    switch(opcion){
-    case 1:
-         break;
-    case 2:
+    mp.tituloSoft(" SOFTCHECK ", 23, 1);
+    mp.tituloSoft(" MANTENIMIENTO ", 23, 2);
 
-        break;
-    case 3:
-        break;
-    case 4:
-        break;
-    case 0: return 0;
-        break;
+    mp.seleccion("BACKUP EQUIPOS", 20, 4, y==0);
+    mp.seleccion("BACKUP TORRES", 20, 5, y==1);
+    mp.seleccion("BACKUP IMPACTOS", 20, 6, y==2);
+    mp.seleccion("MANUAL DE USUARIO", 20, 7, y==3);
+    mp.seleccion("VOLVER", 20, 8, y==4);
+    mp.seleccion("SALIR", 20, 9, y==5);
 
+    switch(rlutil::getkey()){
+
+    case 14: //ARRIBA
+        rlutil::locate(18,5+y);
+        cout<<" "<<endl;
+        y--;
+        if(y<0){
+            y = 0;
+        }
+        break;
+    case 15: //ABAJO
+        rlutil::locate(18,5+y);
+        cout<<" "<<endl;
+        y++;
+        if(y>5){
+            y=5;
+        }
+        break;
+    case 1: //ENTER
+        rlutil::cls();
+        switch(y){
+            menu mp;
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                mp.menuPrincipal();
+                break;
+            case 5:
+                exit(0);
+                break;
+            default:
+                break;
+        }
+    break;
+    default:
+        break;
     }
-        system("pause");
-
-    }
-
-	cout<<endl;
-	system("pause");
-
-
-
+}
 }
 
 
+/// SUB-MENUS
+int menu::subMenuAB(int x, const char*text){
+
+    int y=0;
+    rlutil::hidecursor();
+    rlutil::cls();
+
+    while(true){
+
+    menu mp;
+
+    mp.tituloSoft(" SOFTCHECK ", 23, 1);
+    mp.tituloSoft(" ALTAS & BAJAS ", 21, 2);
+    mp.tituloSoft(text,23,3);
+
+    mp.seleccion("ALTA", 20, 4, y==0);
+    mp.seleccion("BAJA", 20, 5, y==1);
+    mp.seleccion("VOLVER", 20, 6, y==2);
+
+    switch(rlutil::getkey()){
+
+    case 14: //ARRIBA
+        rlutil::locate(18,2+y);
+        cout<<" "<<endl;
+        y--;
+        if(y<0){
+            y = 0;
+        }
+        break;
+    case 15: //ABAJO
+        rlutil::locate(18,2+y);
+        cout<<" "<<endl;
+        y++;
+        if(y>2){
+            y=2
+            ;
+        }
+        break;
+    case 1: //ENTER
+        rlutil::cls();
+
+        switch(y){
+            menu op;
+            equipos aux;
+            case 0:
+                if(x==0){
+                    aux.cargarEquipos();
+                    op.subMenuVolver(50,1);
+                }
+                else if(x==1){
+                    altaOper();
+                    op.subMenuVolver(50,1);
+                }
+                else if(x==2){
+                    //ALTA IMPACTO
+                    op.subMenuVolver(50,1);
+                }
+                else if(x==3){
+                    //ALTA ALERTA
+                    op.subMenuVolver(50,1);
+                }
+                else if(x==4){
+                    //ALTA TORRE
+                    op.subMenuVolver(50,1);
+                }
+            break;
+            case 1:
+                if(x==0){
+                    bajaEquipo();
+                    op.subMenuVolver(50,1);
+                }
+                else if(x==1){
+                    bajaOper();
+                    op.subMenuVolver(50,1);
+                }
+                else if(x==2){
+                    //BAJA IMPACTO
+                    op.subMenuVolver(50,1);
+                }
+                else if(x==3){
+                    //BAJA ALERTA
+                    op.subMenuVolver(50,1);
+                }
+                else if(x==4){
+                    //BAJA TORRE
+                    op.subMenuVolver(50,1);
+                }
+                 break;
+            case 2:
+                menu mp;
+                mp.altaBaja();
+                break;
+
+            default:
+                break;
+        }
+    break;
+    default:
+        break;
+    }
+}
+}
+
+
+int menu::subMenuVolver(int posx, int posy){
+    int y=0;
+    rlutil::hidecursor();
+
+    while(true){
+    menu mp;
+
+    mp.tituloSoft("DESEA VOLVER AL MENU PRINCIPAL?", posx,posy);
+    mp.seleccion("SI", posx, posy+1, y==0);
+    mp.seleccion("NO", posx, posy+2, y==1);
+
+    switch(rlutil::getkey()){
+
+    case 14: //ARRIBA
+        rlutil::locate(posx-1,(posy+1)+y);
+        cout<<" "<<endl;
+        y--;
+        if(y<0){
+            y = 0;
+        }
+        break;
+    case 15: //ABAJO
+        rlutil::locate(posx-1,(posy+2)+y);
+        cout<<" "<<endl;
+        y++;
+        if(y>1){
+            y=1
+            ;
+        }
+        break;
+    case 1: //ENTER
+        rlutil::cls();
+
+        switch(y){
+            menu op;
+            case 0:
+                op.menuPrincipal();
+            break;
+
+            case 1:
+                exit(0);
+                break;
+
+            default:
+                break;
+        }
+    break;
+    default:
+        break;
+    }
+}
+}
+
+int menu::subMenuCambiarEstado(int posx, int posy, int ip){
+    int y=0;
+    rlutil::hidecursor();
+
+    while(true){
+    menu mp;
+
+    mp.tituloSoft("DESEA VOLVER A DAR DE ALTA ESTE EQUIPO?", posx,posy);
+    mp.seleccion("SI", posx, posy+1, y==0);
+    mp.seleccion("NO", posx, posy+2, y==1);
+
+    switch(rlutil::getkey()){
+
+    case 14: //ARRIBA
+        rlutil::locate(posx-1,(posy+1)+y);
+        cout<<" "<<endl;
+        y--;
+        if(y<0){
+            y = 0;
+        }
+        break;
+    case 15: //ABAJO
+        rlutil::locate(posx-1,(posy+2)+y);
+        cout<<" "<<endl;
+        y++;
+        if(y>1){
+            y=1
+            ;
+        }
+        break;
+    case 1: //ENTER
+        rlutil::cls();
+
+        switch(y){
+            menu op;
+            case 0:
+                modificarEstado(ip);
+                cout<<"EQUIPO DADO DE ALTA";
+                op.subMenuVolver(50,1);
+
+
+            break;
+
+            case 1:
+                op.subMenuVolver(50,1);
+            break;
+
+            default:
+                break;
+        }
+    break;
+    default:
+        break;
+    }
+}
+}
 
 
