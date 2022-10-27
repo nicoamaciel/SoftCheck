@@ -41,10 +41,12 @@ using namespace std;
 
     //comportamiento
 
-    void equipos::cargarEquipos(){
+void equipos::cargarEquipos(){
     char nom[20], mark[20];
     int numIp, pos;
     bool est;
+    equipos reg;
+
 
     do{
     cout << " Cargar numero de ip: ";
@@ -66,19 +68,17 @@ using namespace std;
         }
     }while(pos>=0);
 
+    reg.setIphost(numIp);
     cout << " Cargar nombre de host: ";
     cin >>nom;
-    setNombreHost(nom);
+    reg.setNombreHost(nom);
     cout << " Cargar marca del host: ";
     cin >>mark;
-    setMarca(mark);
+    reg.setMarca(mark);
 
     est = true;
-    setEstado(est);
-
-
-
-
+    reg.setEstado(est);
+    reg.grabarenDisco();
     }
 
 
